@@ -11,7 +11,7 @@ namespace MyApplication
       int nextYear = 31;
       
       double myGpa = 3.54;
-      double expectedGpa = 3.8;
+      double expectedGpa = 3.8f;
       
       //char myLetter = "D";
       //char myLastLetter = "R";
