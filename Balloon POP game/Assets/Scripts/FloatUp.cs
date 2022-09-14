@@ -9,11 +9,13 @@ public class FloatUp : MonoBehaviour
     public float upperBound; // Top boundary for when the balloon exits the screen it will get destroyed
 
     private Balloon balloon; // Reference to balloon game object
+    private ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
         balloon = GetComponent<Balloon>();
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class FloatUp : MonoBehaviour
        //Destroy balloon if it reaches the top boundary, we do that with conditional statements
        if(transform.position.y > upperBound)
        {
+            scoreManager.DecreaseScoreText(balloon.scoreToGive);
             Destroy(gameObject);
        } 
     }
