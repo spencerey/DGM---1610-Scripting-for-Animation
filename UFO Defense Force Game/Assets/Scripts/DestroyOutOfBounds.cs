@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    public float topBounds = 30.0f;
-    public float lowerBounds = -10.0f;
+    public float topBounds = 25.0f;
+    public float lowerBounds = -5.0f;
 
     private ScoreManager scoreManager;
     private DetectCollision detectCollision;
