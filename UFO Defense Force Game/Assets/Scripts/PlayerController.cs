@@ -12,13 +12,20 @@ public class PlayerController : MonoBehaviour
 
     public GameObject lazerBolt; //GameObject Projectile to shoot
     public Transform blaster; // Point of origin for the lazerBolt
+    
+    //Audio variables
+    private AudioSource blasterAudio;
+
+    //Store audio
+    public AudioClip laserBlast; 
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        blasterAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            blasterAudio.PlayOneShot(laserBlast, 1.0f);
             Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation); // instantiate lazerBolt Game object at blaster position
         }
 
