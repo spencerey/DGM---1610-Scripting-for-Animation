@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 3908589911357028190}
   - component: {fileID: -9009887931705731143}
   - component: {fileID: -6439535271411689901}
+  - component: {fileID: -519766247782467990}
   m_Layer: 0
   m_Name: UFO_Mothership
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
   scoreToGive: 50
+  explosionParticle: {fileID: 2483237810702354734, guid: a513c27f408e7419da2254b97f1717c0, type: 3}
 --- !u!114 &-6439535271411689901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +246,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBounds: 25
   lowerBounds: -5
+--- !u!114 &-519766247782467990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908589911357028164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594652219b47a48ac88d954892e7d069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserBolt: {fileID: 2482651626835362834, guid: 159515b5a51fb4d249c94a96665f2575, type: 3}
+  alienBlaster: {fileID: 1841200574089787479, guid: 10a878d3e3415457cb072c874bc5c550, type: 3}
+  startDelay: 3
+  spawnInterval: 1.5
 --- !u!1 &3908589911372339946
 GameObject:
   m_ObjectHideFlags: 0

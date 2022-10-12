@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
   scoreToGive: 100
+  explosionParticle: {fileID: 2483237810702354734, guid: a513c27f408e7419da2254b97f1717c0, type: 3}
 --- !u!114 &-4147695172039862262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserBolt: {fileID: 2482651626835362834, guid: 159515b5a51fb4d249c94a96665f2575, type: 3}
-  alienBlaster: {fileID: 0}
+  alienBlaster: {fileID: 1841200574089787479, guid: 10a878d3e3415457cb072c874bc5c550, type: 3}
   startDelay: 3
   spawnInterval: 1.5
 --- !u!1 &8677256320493190057
