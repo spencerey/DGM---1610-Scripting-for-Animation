@@ -14,13 +14,13 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         
-        textScore.text = score.ToString() + " Score ";
+        textScore.text = score.ToString() + " Skull points ";
         score = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        textScore.text = " Score " +  score.ToString();
+        textScore.text = " Skull points " +  score.ToString();
     }
 }
