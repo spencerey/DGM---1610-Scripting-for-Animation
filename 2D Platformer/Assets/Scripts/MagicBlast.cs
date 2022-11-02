@@ -15,8 +15,6 @@ public class MagicBlast : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;  
 
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = -transform.right * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -27,12 +25,12 @@ public class MagicBlast : MonoBehaviour
         
         {
             enemy.TakeDamage(damage); //Run the takedamage function and aplpy damage to enemy
+            Destroy(other.gameObject);
             
         }
-        
+     
         Destroy(gameObject);//Destroy projectile 
-    
-        
+   
 
     }
 }

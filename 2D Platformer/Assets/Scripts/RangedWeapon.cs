@@ -14,6 +14,15 @@ public class RangedWeapon : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            projectile.transform.Rotate(0, -90, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            projectile.transform.Rotate(0,90,0);
+        }
     }
 
     void Shoot()
