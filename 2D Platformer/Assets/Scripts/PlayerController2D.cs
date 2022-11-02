@@ -82,9 +82,7 @@ public class PlayerController2D : MonoBehaviour
     {
       
         isFacingRight = !isFacingRight;
-        //Vector3 scaler = transform.localScale ; //local vriable that stores local scale value
-        //scaler.x *= -1; // flip the sprite graphic
-        //transform.localScale = scaler;
+        
         
         transform.Rotate(0f, 180f, 0f);
     }
