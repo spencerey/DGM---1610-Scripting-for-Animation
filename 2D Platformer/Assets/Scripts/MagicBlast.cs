@@ -6,7 +6,7 @@ public class MagicBlast : MonoBehaviour
 {
 
     public float speed = 30f;
-    public int damage = 10;
+    public int damage = 1;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class MagicBlast : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       GhostEnemy enemy = other.GetComponent<GhostEnemy>(); //Run the TakeDamage function  and apply damage to enemy. 
+       Enemy enemy = other.GetComponent<Enemy>(); //Run the TakeDamage function  and apply damage to enemy. 
 
         if(other.gameObject.CompareTag("Enemy"))
         
