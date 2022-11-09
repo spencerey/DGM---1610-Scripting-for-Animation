@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int maxHealth = 10;
     public int currentHealth;
-    public float deathDelay ;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,8 @@ public class Health : MonoBehaviour
     public void TakeDamage (int dmgAmount)
     {
         currentHealth -= dmgAmount;
-
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject, deathDelay);
-        }
+        Debug.Log("Player Health = " + currentHealth);
+        
     }
 
     public void AddHealth (int healAmount)
