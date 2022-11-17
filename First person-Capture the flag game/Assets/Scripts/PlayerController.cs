@@ -46,16 +46,27 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
+        float x = Input.GetAxis("Horizontal") * moveSpeed; // Getting input for left and right movement
+        float z = Input.GetAxis("Vertical") * moveSpeed; // Getting input for forward and back movement
 
-        rb.velocity = new Vector3(x, rb.velocity.y, z);
+        Vector3 dir = transform.right * x + transform.forward * z; 
+        dir.y = rb.velocity.y ; 
+        
+        
+        //rb.velocity = new Vector3(x, rb.velocity.y, z); // Applying velocity to the x-axis and z-axis to drive the player movement
     }
 
     void CameraLook()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity; // look up and down
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity; // look left and right
+
+        //Restrict movement on the X-Axis between maxLook
+        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
+
+        //Drives camera rotation
+        camera.transform.localRotation = Quaternion.Euler(-rotX, 0, 0); //calculate rotation
+        transform.eulerAngles += Vector3.up * y; 
 
     }
 
