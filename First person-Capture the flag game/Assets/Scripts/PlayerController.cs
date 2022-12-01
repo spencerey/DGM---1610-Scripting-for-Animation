@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {   
-    [Header ("Player Movement")]
+    [Header ("Stats")]
 
     public float moveSpeed; //player speed movement
     public float jumpForce; // player jump force
+    public int curHp;
+    public int maxHp;
     
-    [Header("Camera")]
+    [Header("Mouse Look")]
     public float lookSensitivity ; // How sensitive we will be able to look around
     public float maxLookX; // How far up we can look
     public float minLookX; //How far down we can look
@@ -17,46 +19,70 @@ public class PlayerController : MonoBehaviour
     
     private Camera camera; 
     private Rigidbody rb;
+    //private Weapon weapon;
 
     void Awake ()
+    {
+        //weapon.GetComponent<Weapon>();
+    }
+
+    void Start()
     {
         //Get Components
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+
+        /* Inittialize the UI
+        GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        GameUI.instance.UpdateScoreText(0);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo); */
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void TakeDamage (int damage)
     {
-        
+        curHp -= damage;
+
+        if(curHp <= 0)
+            Die();
+
+        //Game UI.instance.UpdateHealthBar(curHp, maxHp);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Die()
     {
-        Move();
-        CameraLook();
-
-        if(Input.GetButtonDown ("Jump")) 
-        {
-            Jump();
-        }
-        
+        //GameManager.instance.LoseGame();
+        Debug.Log("Player has died! Game over!");
+    }
+    
+    public void GiveHealth (int amountToGive)
+    {
+        //curHp = Mathf.Clamp(curHp + amountToGive, 0, maxHp);
+        //GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        Debug.Log("Player has been healed");
     }
 
+    public void GiveAmmo (int amountToGive)
+    {
+        //weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0 , weapon.maxAmmo);
+        //GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
+        Debug.Log("Player has collected ammo!!");
+    }
+
+    
     void Move()
     {
         float x = Input.GetAxis("Horizontal") * moveSpeed; // Getting input for left and right movement
         float z = Input.GetAxis("Vertical") * moveSpeed; // Getting input for forward and back movement
 
+        //move direction relative to camera
         Vector3 dir = transform.right * x + transform.forward * z; 
+        
         dir.y = rb.velocity.y ; 
-        
-        
-        //rb.velocity = new Vector3(x, rb.velocity.y, z); // Applying velocity to the x-axis and z-axis to drive the player movement
+        rb.velocity = dir;         
     }
 
-    void CameraLook()
+        void CameraLook()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity; // look up and down
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity; // look left and right
@@ -70,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     void Jump()
     {
         Ray ray = new Ray (transform.position, Vector3.down);
@@ -79,4 +106,30 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
+
+    
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        CameraLook();
+
+        /*Fire button
+        if(Input.GetButton("Fire1"))
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }*/
+
+        //Jump button
+        if(Input.GetButtonDown ("Jump"))         
+            Jump();
+        
+
+        //Don't do anything is the game is pause
+        //if(GameManager.instance.gamePaused == true)
+            //return;
+        
+    }
+
 }
