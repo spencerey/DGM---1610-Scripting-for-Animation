@@ -50,12 +50,14 @@ public class Pickup : MonoBehaviour
               default:
               print("Type not accepted");
               break;
-         }  
+          } 
+          
+        //other.GetComponent<AudioSource>().PlayOneShot(pickupSFX); */
 
-           // other.GetComponent<AudioSource>().PlayOneShot(pickupSFX); */
-            Destroy(gameObject);
+          Destroy(gameObject);
         }
     }
+
     // Update is called once per frame
     void Update()
     {
