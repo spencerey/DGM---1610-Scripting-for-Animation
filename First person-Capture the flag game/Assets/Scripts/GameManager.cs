@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
 {
 
     //[Header: "Flags"]
-    public bool hasFlag ;
-    public bool flagPlaced ;  
+    public bool hasFlag;
+    public bool flagPlaced;  
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(flagPlaced)
+        if(flagPlaced == true)
         {
             WinGame();
         }
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void PlaceFlag()
     {
+        Debug.Log(" Flag has been placed");
         flagPlaced = true; 
     }
 }
