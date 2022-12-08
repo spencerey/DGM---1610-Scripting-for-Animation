@@ -21,7 +21,7 @@ public class HomeBase : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         
-        Debug.Log(" Player has entered trigger");
+        Debug.Log(" Player has entered trigger area");
         
         if(other.CompareTag("Player") && gm.hasFlag)
         {

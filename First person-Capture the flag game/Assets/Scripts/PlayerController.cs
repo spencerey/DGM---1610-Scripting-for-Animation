@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.instance.LoseGame();
         Debug.Log("Player has died! Game over!");
+      //  Time.timeScale = 0 ; 
     }
     
     public void GiveHealth (int amountToGive)
