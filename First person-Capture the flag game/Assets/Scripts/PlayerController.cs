@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake ()
     {
-        curHp = maxHp
+        curHp = maxHp;
         //weapon.GetComponent<Weapon>();
     }
 

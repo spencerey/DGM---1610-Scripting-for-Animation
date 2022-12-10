@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         //Get the components
         target = FindObjectOfType<PlayerController>().gameObject;
 
-        //player = gameManager.Find("Player").GetComponent<PlayerController>();
+        //player = GameManager.Find("Player").GetComponent<PlayerController>();
 
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
 
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         if(dist <= attackRange)
            
         {  
-            player.TakeDamage(1);
+            return;//player.TakeDamage(1);
 
 
           //  if(weapon.CanShoot())
