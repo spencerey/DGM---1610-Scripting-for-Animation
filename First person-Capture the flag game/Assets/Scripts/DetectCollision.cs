@@ -28,5 +28,6 @@ public class DetectCollision : MonoBehaviour
     void Explosion()
     {
         Instantiate(explosionParticle, transform.position, transform.rotation);
+       
     }
 }
