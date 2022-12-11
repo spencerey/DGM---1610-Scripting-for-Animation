@@ -10,9 +10,9 @@ public class MainMenu : MonoBehaviour
 
     private int sceneToLoad ; 
 
-    public void StartGame()
+    public void PlayGame()
     {
-        SceneManager.LoadScene(sceneToLoad); //Indexed scene to load
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Indexed scene to load
         Debug.Log("New Scene loaded!");
     }
 
