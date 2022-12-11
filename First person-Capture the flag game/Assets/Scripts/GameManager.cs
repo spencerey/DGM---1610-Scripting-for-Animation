@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         //Flag bools
         hasFlag = false; 
         flagPlaced = false;
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         Debug.Log("You've Won the game!");
-        Time.timeScale = 0; // Freeze the game
+        //Time.timeScale = 0; // Freeze the game
 
     }
 

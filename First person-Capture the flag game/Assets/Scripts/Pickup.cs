@@ -16,12 +16,15 @@ public class Pickup : MonoBehaviour
     public float bobHeight;
     private bool bobbingUp;
     private Vector3 startPos;
+    public ParticleSystem pickupParticles;
 
-    public AudioClip pickupSFX;
+    //public AudioClip pickupSFX;
     // Start is called before the first frame update
     void Start()
     {
+
         startPos = transform.position;
+        Instantiate(pickupParticles, transform.position, transform.rotation);
     }
 
     public enum PickupType
@@ -35,26 +38,27 @@ public class Pickup : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
+
+            Debug.Log("Player has collected ammo!!");
             
+            switch(type)
+            {
+                case PickupType.Health:
+                player.GiveHealth(healthAmount);
+                Destroy(gameObject);
+
+                break;
+
+                case PickupType.Ammo:
+                player.GiveAmmo(ammoAmount);
+                break;
+
+                default:
+                print("Type not accepted");
+                break;
+            }  
             
-          switch(type)
-          {
-              case PickupType.Health:
-              player.GiveHealth(healthAmount);
-              break;
-
-              case PickupType.Ammo:
-              player.GiveAmmo(ammoAmount);
-              break;
-
-              default:
-              print("Type not accepted");
-              break;
-          } 
-          
-        //other.GetComponent<AudioSource>().PlayOneShot(pickupSFX); */
-
-          Destroy(gameObject);
+    
         }
     }
 

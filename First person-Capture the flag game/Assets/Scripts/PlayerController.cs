@@ -19,55 +19,49 @@ public class PlayerController : MonoBehaviour
     
     private Camera camera; 
     private Rigidbody rb;
-    //private Weapon weapon;
+
+
 
     void Awake ()
     {
         curHp = maxHp;
-        //weapon.GetComponent<Weapon>();
+        
     }
 
     void Start()
     {
-        //Get Components
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
-
-        /* Inittialize the UI
-        GameUI.instance.UpdateHealthBar(curHp, maxHp);
-        GameUI.instance.UpdateScoreText(0);
-        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo); */
     }
 
 
     public void TakeDamage (int damage)
     {
         curHp -= damage;
-
         if(curHp <= 0)
             Die();
-
-        //Game UI.instance.UpdateHealthBar(curHp, maxHp);
     }
 
     void Die()
     {
-        //GameManager.instance.LoseGame();
         Debug.Log("Player has died! Game over!");
-      //  Time.timeScale = 0 ; 
+        Time.timeScale = 0 ; 
+    }
+
+    void LoseGame()
+    {
+        Debug.Log("You lost");
     }
     
     public void GiveHealth (int amountToGive)
     {
-        //curHp = Mathf.Clamp(curHp + amountToGive, 0, maxHp);
-        //GameUI.instance.UpdateHealthBar(curHp, maxHp);
         Debug.Log("Player has been healed");
+       
+       
     }
 
     public void GiveAmmo (int amountToGive)
     {
-        //weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0 , weapon.maxAmmo);
-        //GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
         Debug.Log("Player has collected ammo!!");
     }
 
@@ -84,7 +78,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = dir;         
     }
 
-        void CameraLook()
+    void CameraLook()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity; // look up and down
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity; // look left and right
@@ -116,21 +110,9 @@ public class PlayerController : MonoBehaviour
         Move();
         CameraLook();
 
-        /*Fire button
-        if(Input.GetButton("Fire1"))
-        {
-            if(weapon.CanShoot())
-                weapon.Shoot();
-        }*/
-
-        //Jump button
         if(Input.GetButtonDown ("Jump"))         
             Jump();
         
-
-        //Don't do anything is the game is pause
-        //if(GameManager.instance.gamePaused == true)
-            //return;
         
     }
 

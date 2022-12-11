@@ -21,11 +21,12 @@ public class HomeBase : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         
-        Debug.Log(" Player has entered trigger area");
+        Debug.Log("Player has reached home base");
+        Debug.Log("you've won");
         
         if(other.CompareTag("Player") && gm.hasFlag)
         {
-            Debug.Log("Player has reached home base");
+            
             gm.PlaceFlag(); // run place flag function in game manager. 
             flagRend.enabled = true; //Make flag visible
         }
